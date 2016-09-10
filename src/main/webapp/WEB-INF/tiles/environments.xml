@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="environment/environmentList" extends="DefaultTemplate">
+        <put-attribute name="title" value="Environments" />
+        <put-attribute name="body" value="/WEB-INF/views/environment/environmentList.jsp" />
+    </definition>
+    
+    <definition name="environment/environmentCreateOrUpdate" extends="DefaultTemplate">
+        <put-attribute name="title" value="Environment editing" />
+        <put-attribute name="body" value="/WEB-INF/views/environment/environmentCreateOrUpdate.jsp" />
+    </definition>
+    
+</tiles-definitions>

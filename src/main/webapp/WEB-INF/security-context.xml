@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:sec="http://www.springframework.org/schema/security" 
+       xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+         http://www.springframework.org/schema/security 
+         http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+  <sec:http pattern="/resources/**" security="none" />
+
+  <sec:http use-expressions="true">
+    <sec:intercept-url pattern="/login" access="permitAll" />
+    <sec:intercept-url pattern="/configuration/**" access="hasRole('ROLE_QA')" />
+    <sec:intercept-url pattern="/tests/**" access="hasRole('ROLE_QA')" />
+    <sec:intercept-url pattern="/results/**" access="hasRole('ROLE_QA')" />
+    <sec:intercept-url pattern="/reports/**" access="hasAnyRole('ROLE_MANAGER', 'ROLE_QA')" />
+    <sec:intercept-url pattern="/**" access="isAuthenticated()" />
+    
+    <sec:form-login login-page="/login" 
+      login-processing-url="/loginCheck" 
+      username-parameter="username" 
+      password-parameter="password" 
+      default-target-url="/home" 
+      always-use-default-target="true" 
+      authentication-failure-url="/login?error=true" />
+    <sec:csrf disabled="true" />
+    <sec:access-denied-handler error-page="/403"/> 
+  </sec:http>
+
+  <sec:authentication-manager alias="applicationAuthenticationManager">
+    <sec:authentication-provider>
+      <sec:jdbc-user-service data-source-ref="dataSource"
+        users-by-username-query="SELECT id, password, 1 FROM User WHERE lower(username) = lower(?)"
+        authorities-by-username-query="SELECT id, role FROM User WHERE id = ?" />
+    </sec:authentication-provider>
+  </sec:authentication-manager>
+
+</beans>

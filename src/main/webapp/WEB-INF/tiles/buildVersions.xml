@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="buildVersion/buildVersions" extends="DefaultTemplate">
+		<put-attribute name="title" value="Build Versions" />
+		<put-attribute name="body" value="/WEB-INF/views/buildVersion/buildVersions.jsp" />
+	</definition>
+
+	<definition name="buildVersion/createOrModify" extends="DefaultTemplate">
+		<put-attribute name="title" value="Build Version editing" />
+		<put-attribute name="body" value="/WEB-INF/views/buildVersion/createOrModify.jsp" />
+	</definition>
+
+</tiles-definitions>

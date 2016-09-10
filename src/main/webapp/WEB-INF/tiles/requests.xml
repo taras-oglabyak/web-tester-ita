@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="request/requests" extends="DefaultTemplate">
+		<put-attribute name="title" value="Requests" />
+		<put-attribute name="body" value="/WEB-INF/views/request/requests.jsp" />
+	</definition>
+	
+	<definition name="request/requestCreateEdit" extends="DefaultTemplate">
+		<put-attribute name="title" value="Request editing" />
+		<put-attribute name="body" value="/WEB-INF/views/request/requestCreateEdit.jsp" />
+	</definition>
+	
+</tiles-definitions>
